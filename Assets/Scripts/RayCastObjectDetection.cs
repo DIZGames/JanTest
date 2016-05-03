@@ -42,7 +42,12 @@ public class RayCastObjectDetection : MonoBehaviour {
             t.gameObject.GetComponent<Rigidbody2D>().AddForce(mouseposition * BulletSpeed * Time.deltaTime,ForceMode2D.Impulse);
 
         }
-        
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject textObject = (GameObject)Instantiate(Resources.Load("DamageText"));
+        }
+
     }
 
     void Shoot()
