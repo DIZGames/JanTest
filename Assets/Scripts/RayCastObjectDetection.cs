@@ -5,7 +5,8 @@ public class RayCastObjectDetection : MonoBehaviour {
 
     public float damage = 10;
     public LayerMask ToHit;
-
+    public Transform Bullet;
+    public float BulletSpeed;
     float timeToFire = 0;
     Transform FirePoint;
 
@@ -19,6 +20,8 @@ public class RayCastObjectDetection : MonoBehaviour {
         }
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -26,10 +29,20 @@ public class RayCastObjectDetection : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
-            Debug.Log("Shoot Ray");
-        }
+            Vector2 mouseposition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+            Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
 
+
+            Transform t = GameObject.Instantiate(Bullet);
+            t.position = transform.position;
+            t.rotation = transform.rotation;
+            t.gameObject.name = "Rocket";
+
+            Debug.Log(mouseposition.x.ToString() + " " + mouseposition.y.ToString());
+            t.gameObject.GetComponent<Rigidbody2D>().AddForce(mouseposition * BulletSpeed * Time.deltaTime,ForceMode2D.Impulse);
+
+        }
+        
     }
 
     void Shoot()
