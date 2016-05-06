@@ -65,6 +65,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
+    <Compile Include="Assets\Scripts\Inventory\CreateItem.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items.cs" />
     <Compile Include="Assets\Scripts\PlayerController_AddForce.cs" />
     <Compile Include="Assets\Scripts\PlayerController_Translate.cs" />
     <Compile Include="Assets\Scripts\PlayerInventar.cs" />
