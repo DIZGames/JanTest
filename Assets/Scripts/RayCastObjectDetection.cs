@@ -27,26 +27,38 @@ public class RayCastObjectDetection : MonoBehaviour {
     {
         //Shoot();
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Vector2 mouseposition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-            Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    Vector2 mouseposition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        //    Vector2 firePointPosition = new Vector2(transform.position.x, transform.position.y);
 
 
-            Transform t = GameObject.Instantiate(Bullet);
-            t.position = transform.position;
-            t.rotation = transform.rotation;
-            t.gameObject.name = "Rocket";
+        //    // Berechnet Vektor vom Spieler zur Maus
+        //    Vector2 vectornew = mouseposition - firePointPosition;
+        //    // Normalisiert den Vektor
+        //    vectornew.Normalize();
 
-            Debug.Log(mouseposition.x.ToString() + " " + mouseposition.y.ToString());
-            t.gameObject.GetComponent<Rigidbody2D>().AddForce(mouseposition * BulletSpeed * Time.deltaTime,ForceMode2D.Impulse);
 
-        }
+        //    Transform t = GameObject.Instantiate(Bullet);
+        //    t.position = transform.position;
+        //    t.rotation = transform.rotation;
+        //    t.gameObject.name = "Rocket";
 
-        if (Input.GetButtonDown("Fire2"))
-        {
-            GameObject textObject = (GameObject)Instantiate(Resources.Load("DamageText"));
-        }
+        //    Debug.Log(mouseposition.x.ToString() + " " + mouseposition.y.ToString());
+
+        //    t.gameObject.GetComponent<Rigidbody2D>().AddForce(vectornew * BulletSpeed * Time.deltaTime,ForceMode2D.Impulse);
+
+        //}
+
+        //if (Input.GetButtonDown("Fire2"))
+        //{
+
+        //    ItemList asd = (ItemList)Resources.Load("ItemDatabase");
+
+        //    Debug.Log(asd.itemList[0].itemName);
+
+        //  //  GameObject textObject = (GameObject)Instantiate(Resources.Load("DamageText"));
+        //}
 
     }
 

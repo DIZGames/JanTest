@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    public interface WeaponInterface
+    public interface ItemMethods
     {
-        void shoot();
+        void primaryFire();
+        void secondaryFire();
 
     }
 }
