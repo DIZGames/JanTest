@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\CreateItemDatabase.cs" />
     <Compile Include="Assets\HotbarScript.cs" />
+    <Compile Include="Assets\InventoryInterface.cs" />
     <Compile Include="Assets\Item.cs" />
     <Compile Include="Assets\ItemList.cs" />
     <Compile Include="Assets\ItemMethods.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\UI_Control.cs" />
     <Compile Include="Assets\Scripts\WeaponInterface.cs" />
     <Compile Include="Assets\Scripts\WeaponSelect.cs" />
+    <Compile Include="Assets\SlotListScript.cs" />
     <Compile Include="Assets\SlotScript.cs" />
     <Compile Include="Assets\WeaponInterface.cs" />
   </ItemGroup>

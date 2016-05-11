@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class SlotScript : MonoBehaviour {
 
+    [SerializeField]
+    public Item item;
+
 	// Use this for initialization
 	void Start () {
-	
+        item = null;
 	}
 	
 	// Update is called once per frame
@@ -14,30 +17,48 @@ public class SlotScript : MonoBehaviour {
 	    
 	}
 
-    private Item item;
+    public void setItem(Item item) {
 
-    public void SelectImage() {
-
-        Debug.Log("ImageSelected!");
-        GetComponent<Image>().color = Color.cyan;
-
-
-
-    }
-
-    public void setItemInSlot(Item item)
-    {
+        Debug.Log("Set Item " + item.itemName);
         this.item = item;
-        setSourceImage(item.itemIcon);
+        setIcon(item.itemIcon);
+
     }
 
-    public Item getItemInSlot() {
+
+
+    public Item getItem() {
         return item;
     }
 
-    private void setSourceImage(Sprite ItemSprite) {
-        GetComponent<Image>().sprite = ItemSprite;
+    public void clearSlot() {
+        item = null;
+        setIcon(null);
+        
     }
-    
+
+    private void setIcon(Sprite sprite) {
+        gameObject.transform.GetComponent<Image>().sprite = sprite;
+        
+    }
+
+    public bool isFree() {
+        if (item == null)
+        {
+            Debug.Log("true");
+            return true;
+
+        }
+        return false;
+    }
+
+    //public void SelectImage(GameObject gameobject) {
+
+
+    //    Debug.Log(gameObject.name);
+    //    GetComponent<Image>().color = Color.cyan;
+    //}
+
+
     
 }

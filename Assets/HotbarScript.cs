@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class HotbarScript : MonoBehaviour {
 
@@ -11,18 +12,23 @@ public class HotbarScript : MonoBehaviour {
     private ItemList itemList;
     private Item activeItem;
     private Transform activeObject;
-    private List<Item> HotbarList;
+
 
     // Use this for initialization
     void Start () {
         itemList = (ItemList)Resources.Load("ItemDatabase");
         activeItem = new Item();
 
-
-        SetItemOnHotbarSlot(1, itemList.getItemByID(0));
-        SetItemOnHotbarSlot(2, itemList.getItemByID(1));
-
-
+        keyCodesForSlots[0] = KeyCode.Alpha0;
+        keyCodesForSlots[1] = KeyCode.Alpha1;
+        keyCodesForSlots[2] = KeyCode.Alpha2;
+        keyCodesForSlots[3] = KeyCode.Alpha3;
+        keyCodesForSlots[4] = KeyCode.Alpha4;
+        keyCodesForSlots[5] = KeyCode.Alpha5;
+        keyCodesForSlots[6] = KeyCode.Alpha6;
+        keyCodesForSlots[7] = KeyCode.Alpha7;
+        keyCodesForSlots[8] = KeyCode.Alpha8;
+        keyCodesForSlots[9] = KeyCode.Alpha9;
     }
 	
 	// Update is called once per frame
@@ -31,6 +37,8 @@ public class HotbarScript : MonoBehaviour {
         for (int i = 0; i < 10; i++) {
             if (Input.GetKeyDown(keyCodesForSlots[i]))
             {
+                Debug.Log("Key "+i.ToString());
+
                 activeItem = null;
                 if (activeObject != null) {
                     activeObject.parent = null;
@@ -39,7 +47,7 @@ public class HotbarScript : MonoBehaviour {
                 
 
                 //Initialize Item and set it as active
-                activeItem = GetItemFromHotbarSlot(i);
+                //activeItem = GetItemFromHotbarSlot(i);
 
                 activeObject = Instantiate(activeItem.itemModel.transform) as Transform;
                 activeObject.parent = Player.transform; // group the instance under the spawner
@@ -75,13 +83,17 @@ public class HotbarScript : MonoBehaviour {
 
     }
 
+   
 
-    public void SetItemOnHotbarSlot(int index, Item item) {
-        transform.GetChild(0).GetChild(index).GetComponent<SlotScript>().setItemInSlot(item);
-    }
+    //public void onPointerEnterSlot(GameObject _gameobject) {
+    //   Debug.Log("Enter: "+_gameobject.GetComponent<SlotScript>().gameObject.name);
+    //}
 
-    public Item GetItemFromHotbarSlot(int index)
-    {
-        return transform.GetChild(0).GetChild(index).GetComponent<SlotScript>().getItemInSlot();
-    }
+    //public void onPointerDownSlot(GameObject _gameobject)
+    //{
+    //    Debug.Log("Down: " + _gameobject.GetComponent<SlotScript>().gameObject.name);
+    //}
+
+
+
 }
