@@ -6,94 +6,66 @@ using System;
 
 public class HotbarScript : MonoBehaviour {
 
+    [SerializeField]
+    private Transform EquipmentPoint;
 
-    public KeyCode[] keyCodesForSlots = new KeyCode[10];
-    public Transform Player;
-    private ItemList itemList;
-    private Item activeItem;
-    private Transform activeObject;
+    [SerializeField]
+    private KeyCode[] SlotCodes = new KeyCode[10];
 
 
-    // Use this for initialization
-    void Start () {
-        itemList = (ItemList)Resources.Load("ItemDatabase");
-        activeItem = new Item();
 
-        keyCodesForSlots[0] = KeyCode.Alpha0;
-        keyCodesForSlots[1] = KeyCode.Alpha1;
-        keyCodesForSlots[2] = KeyCode.Alpha2;
-        keyCodesForSlots[3] = KeyCode.Alpha3;
-        keyCodesForSlots[4] = KeyCode.Alpha4;
-        keyCodesForSlots[5] = KeyCode.Alpha5;
-        keyCodesForSlots[6] = KeyCode.Alpha6;
-        keyCodesForSlots[7] = KeyCode.Alpha7;
-        keyCodesForSlots[8] = KeyCode.Alpha8;
-        keyCodesForSlots[9] = KeyCode.Alpha9;
-    }
-	
-	// Update is called once per frame
-	void Update () {
+    void Update() {
 
-        for (int i = 0; i < 10; i++) {
-            if (Input.GetKeyDown(keyCodesForSlots[i]))
-            {
-                Debug.Log("Key "+i.ToString());
+        for (int i = 0; i < SlotCodes.Length; i++) {
+            if (Input.GetKeyDown(SlotCodes[i])) {
 
-                activeItem = null;
-                if (activeObject != null) {
-                    activeObject.parent = null;
-                    Destroy(activeObject);
-                }
+                resetColorOfSlot();
+                setSelectedColor(transform.GetChild(0).GetChild(i));
+
+
+                SetSlotItemToEquipped(transform.GetChild(0).GetChild(i));
                 
 
-                //Initialize Item and set it as active
-                //activeItem = GetItemFromHotbarSlot(i);
 
-                activeObject = Instantiate(activeItem.itemModel.transform) as Transform;
-                activeObject.parent = Player.transform; // group the instance under the spawner
-                activeObject.localPosition = Vector3.zero; // make it at the exact position of the spawner
-                activeObject.localRotation = Quaternion.identity; // same for rotation
 
-                //
-                Debug.Log("1 activeItem: "+activeItem.itemName+" activeObject: " + activeObject.gameObject.name);
-            }
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Debug.Log("2 activeItem: " + activeItem.itemName + " activeObject: " + activeObject.gameObject.name);
-            if (activeItem.itemType == ItemType.Weapon)
-            {
-                Debug.Log("3 activeItem: " + activeItem.itemName + " activeObject: " + activeObject.gameObject.name);
-                activeItem.itemModel.GetComponent<WeaponInterface>().test();
-                Debug.Log("4 activeItem: " + activeItem.itemName + " activeObject: " + activeObject.gameObject.name);
             }
 
-
         }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (activeItem.itemType == ItemType.Weapon)
-            {
-                activeObject.GetComponent<WeaponInterface>().test();
-            }
-        }
-
 
     }
 
-   
-
-    //public void onPointerEnterSlot(GameObject _gameobject) {
-    //   Debug.Log("Enter: "+_gameobject.GetComponent<SlotScript>().gameObject.name);
-    //}
-
-    //public void onPointerDownSlot(GameObject _gameobject)
-    //{
-    //    Debug.Log("Down: " + _gameobject.GetComponent<SlotScript>().gameObject.name);
-    //}
 
 
+
+
+    private void resetColorOfSlot() {
+        for (int i = 0; i < SlotCodes.Length; i++)
+        {
+                transform.GetChild(0).GetChild(i).GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    private void setSelectedColor(Transform slot) {
+        slot.GetComponent<Image>().color = Color.cyan;
+    }
+
+    private void SetSlotItemToEquipped(Transform slot) {
+        Item item = slot.GetChild(0).GetComponent<ItemOnObject>().getItem();
+
+        Debug.Log("SetSlotItemToEquipped"+item.name);
+
+        if (item != null) {
+            Debug.Log("SetSlotItemToEquipped___!!!");
+            GameObject _item = Instantiate(item.itemModel);
+
+            _item.transform.position = EquipmentPoint.position;
+            _item.transform.rotation = EquipmentPoint.rotation;
+            _item.transform.parent = EquipmentPoint;
+        }
+
+       
+
+
+    }
 
 }

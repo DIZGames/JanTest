@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
+
 
 [System.Serializable]
-public class Item{
-
+public class Item: ScriptableObject{
+    
     public string itemName;                                     //itemName of the item
     public int itemID;                                          //itemID of the item
     public string itemDesc;                                     //itemDesc of the item
@@ -13,8 +15,7 @@ public class Item{
     public ItemType itemType;                                   //itemType of the Item
     public float itemWeight;                                    //itemWeight of the item
     public int maxStack = 1;
-    public int indexItemInList = 999;
-    public int rarity;
+
 
     public Item()
     {

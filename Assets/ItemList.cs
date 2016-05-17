@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ItemList : ScriptableObject
+public class ItemList: ScriptableObject
 {
-
+    [SerializeField]
+    private GameObject PrefabItemTestM;
     [SerializeField]
     public List<Item> itemList = new List<Item>();              //List of it
 
@@ -27,4 +28,18 @@ public class ItemList : ScriptableObject
         }
         return null;
     }
+
+    public GameObject getItemByIDAsSlotItem(int id)
+    {
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            if (itemList[i].itemID == id) {
+                Item _item = itemList[i].getCopy();
+                GameObject asd = Instantiate(PrefabItemTestM);
+                asd.transform.GetComponent<ItemOnObject>().setItem(_item);
+            }        
+        }
+        return null;
+    }
+
 }
