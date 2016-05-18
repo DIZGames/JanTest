@@ -22,11 +22,8 @@ public class HotbarScript : MonoBehaviour {
                 resetColorOfSlot();
                 setSelectedColor(transform.GetChild(0).GetChild(i));
 
-
+                resetEquipmentPoint();
                 SetSlotItemToEquipped(transform.GetChild(0).GetChild(i));
-                
-
-
 
             }
 
@@ -49,8 +46,20 @@ public class HotbarScript : MonoBehaviour {
         slot.GetComponent<Image>().color = Color.cyan;
     }
 
+    private void resetEquipmentPoint() {
+
+
+        if (EquipmentPoint.childCount > 0) {
+            Transform asd = EquipmentPoint.GetChild(0);
+            Destroy(asd.gameObject);
+        }
+        
+    }
+
     private void SetSlotItemToEquipped(Transform slot) {
         Item item = slot.GetChild(0).GetComponent<ItemOnObject>().getItem();
+
+      
 
         Debug.Log("SetSlotItemToEquipped"+item.name);
 
@@ -58,14 +67,12 @@ public class HotbarScript : MonoBehaviour {
             Debug.Log("SetSlotItemToEquipped___!!!");
             GameObject _item = Instantiate(item.itemModel);
 
+
+            
+
             _item.transform.position = EquipmentPoint.position;
             _item.transform.rotation = EquipmentPoint.rotation;
             _item.transform.parent = EquipmentPoint;
         }
-
-       
-
-
     }
-
 }

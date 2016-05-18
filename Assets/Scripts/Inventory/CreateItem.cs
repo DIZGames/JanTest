@@ -11,7 +11,7 @@ public class CreateItem{
     {
         Item asset = ScriptableObject.CreateInstance<Item>();
 
-        AssetDatabase.CreateAsset(asset, "Assets/Resources/SingleItem/Item.asset");
+        AssetDatabase.CreateAsset(asset, "Assets/Resources/SingleItems/Item.asset");
         AssetDatabase.SaveAssets();
 
         EditorUtility.FocusProjectWindow();

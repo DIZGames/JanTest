@@ -9,4 +9,5 @@ public enum ItemType
     Consumable = 2,
     Suit = 3,
     Tool = 4,
+    Ammo = 5
 }
