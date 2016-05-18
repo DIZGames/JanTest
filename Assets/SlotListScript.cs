@@ -17,6 +17,11 @@ public class SlotListScript : MonoBehaviour {
         GameObject asd = Instantiate(variableForPrefab);        
         asd.transform.GetComponent<ItemOnObject>().setItem(_item);
 
+
+        Debug.Log("Vorher" + _item.itemName);
+        Weapon asd123 = (Weapon)_item;
+        Debug.Log("WEAPONTEST"+asd123.AmmoType);
+
         for (int i = 0; i < transform.childCount; i++) {
 
             if (transform.GetChild(i).childCount == 0) {

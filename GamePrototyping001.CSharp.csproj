@@ -71,11 +71,25 @@
     <Compile Include="Assets\InventoryInterface.cs" />
     <Compile Include="Assets\InventoryKeys.cs" />
     <Compile Include="Assets\InventoryScript.cs" />
-    <Compile Include="Assets\Item.cs" />
     <Compile Include="Assets\ItemList.cs" />
     <Compile Include="Assets\ItemMethods.cs" />
     <Compile Include="Assets\ItemMethodsA.cs" />
     <Compile Include="Assets\ItemOnObject.cs" />
+    <Compile Include="Assets\ItemScripts\Ammo.cs" />
+    <Compile Include="Assets\ItemScripts\Block.cs" />
+    <Compile Include="Assets\ItemScripts\Clothing.cs" />
+    <Compile Include="Assets\ItemScripts\Consumables.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateAmmo.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateBlocks.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateClothing.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateConsumables.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateMaterial.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateTools.cs" />
+    <Compile Include="Assets\ItemScripts\CreateScripts\CreateWeapon.cs" />
+    <Compile Include="Assets\ItemScripts\Item.cs" />
+    <Compile Include="Assets\ItemScripts\Materials.cs" />
+    <Compile Include="Assets\ItemScripts\Tool.cs" />
+    <Compile Include="Assets\ItemScripts\Weapon.cs" />
     <Compile Include="Assets\ItemType.cs" />
     <Compile Include="Assets\OnDropSlot.cs" />
     <Compile Include="Assets\PistolScript.cs" />
@@ -95,6 +109,7 @@
     <Compile Include="Assets\Scripts\WeaponSelect.cs" />
     <Compile Include="Assets\SlotListScript.cs" />
     <Compile Include="Assets\SlotScript.cs" />
+    <Compile Include="Assets\WeaponEquippedScript.cs" />
     <Compile Include="Assets\WeaponInterface.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

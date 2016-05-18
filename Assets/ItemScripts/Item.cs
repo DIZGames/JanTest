@@ -13,8 +13,8 @@ public class Item: ScriptableObject{
     public GameObject itemModel;                                //itemModel of the item
     public int itemValue = 1;                                   //itemValue is at start 1
     public ItemType itemType;                                   //itemType of the Item
-    public float itemWeight;                                    //itemWeight of the item
-    public int maxStack = 1;
+
+
 
 
     public Item()
@@ -30,7 +30,6 @@ public class Item: ScriptableObject{
         itemIcon = icon;
         itemModel = model;
         itemType = type;
-        this.maxStack = maxStack;
     }
 
     public Item getCopy()

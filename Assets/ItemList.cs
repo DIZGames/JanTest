@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class ItemList: ScriptableObject
 {
     [SerializeField]
-    private GameObject PrefabItemTestM;
-    [SerializeField]
-    public List<Item> itemList = new List<Item>();              //List of it
+    private List<Item> itemList = new List<Item>();              //List of it
+
+
+    public Item getItemByListIndex(int index)
+    {
+        return itemList[index].getCopy();
+    }
 
     public Item getItemByID(int id)
     {
@@ -29,17 +34,8 @@ public class ItemList: ScriptableObject
         return null;
     }
 
-    public GameObject getItemByIDAsSlotItem(int id)
-    {
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            if (itemList[i].itemID == id) {
-                Item _item = itemList[i].getCopy();
-                GameObject asd = Instantiate(PrefabItemTestM);
-                asd.transform.GetComponent<ItemOnObject>().setItem(_item);
-            }        
-        }
-        return null;
+    public int getCount() {
+        return itemList.Count;
     }
 
 }
