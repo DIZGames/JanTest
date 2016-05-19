@@ -14,10 +14,6 @@ public class RayCastObjectDetection : MonoBehaviour {
     void Start()
     {
         FirePoint = transform.FindChild("FirePoint");
-        if (FirePoint == null)
-        {
-            Debug.LogError("No FirePoint");
-        }
     }
 
 

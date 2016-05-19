@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface WeaponInterface  {
+public interface Weaponinterface  {
 
-    void test();
+    void primaryFire();
+
+    void secondaryFire();
 }

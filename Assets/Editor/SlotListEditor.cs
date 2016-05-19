@@ -7,7 +7,7 @@ public class SlotListEditor : Editor {
 
     
     private int itemIndex;
-    private int itemValue = 1;
+    private int itemValue;
 
     public Transform gObject;
 
@@ -46,8 +46,8 @@ public class SlotListEditor : Editor {
             
 
             Item item = itemList.getItemByListIndex(itemIndex);
-            item.itemValue = itemValue;
-            Debug.Log("ITEM FOUND:" + item.itemID.ToString() + " " + item.itemValue);
+            item.itemCount = itemValue;
+            Debug.Log("ITEM FOUND:" + item.itemID.ToString() + " " + item.itemCount);
 
             slScript.addItemToNextFreeSlot(item, gObject);
             

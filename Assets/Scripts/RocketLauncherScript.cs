@@ -3,11 +3,13 @@ using System.Collections;
 using Assets.Scripts;
 using System;
 
-public class RocketLauncherScript : MonoBehaviour, WeaponInterface
+public class RocketLauncherScript : MonoBehaviour, Weaponinterface
 {
     public Transform FirePoint;
-    public Transform Bullet;
-    public float BulletSpeed;
+
+    [SerializeField]
+    private Weapon RocketLauncher;
+
     
     public void test()
     {
@@ -19,15 +21,26 @@ public class RocketLauncherScript : MonoBehaviour, WeaponInterface
         // Normalisiert den Vektor
         vectornew.Normalize();
 
-        Transform t = GameObject.Instantiate(Bullet);
-        t.position = FirePoint.position;
-        t.rotation = FirePoint.rotation;
+        GameObject t = GameObject.Instantiate(RocketLauncher.Ammo.itemModel);
+        t.transform.position = FirePoint.position;
+        t.transform.rotation = FirePoint.rotation;
         t.gameObject.name = "Rocket";
+
 
         Debug.Log(mouseposition.x.ToString() + " " + mouseposition.y.ToString());
 
-        t.gameObject.GetComponent<Rigidbody2D>().AddForce(vectornew * BulletSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        t.gameObject.GetComponent<Rigidbody2D>().AddForce(vectornew * RocketLauncher.bulletSpeed * Time.deltaTime, ForceMode2D.Impulse);
 
-        Debug.Log("Hallo");
+
+    }
+
+    public void primaryFire()
+    {
+        test();
+    }
+
+    public void secondaryFire()
+    {
+        throw new NotImplementedException();
     }
 }

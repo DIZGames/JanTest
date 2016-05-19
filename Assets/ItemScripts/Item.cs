@@ -11,7 +11,8 @@ public class Item: ScriptableObject{
     public string itemDesc;                                     //itemDesc of the item
     public Sprite itemIcon;                                     //itemIcon of the item
     public GameObject itemModel;                                //itemModel of the item
-    public int itemValue = 1;                                   //itemValue is at start 1
+    public int itemCount = 1;                                   //itemValue is at start 1
+    public int maxItemCount = 1;
     public ItemType itemType;                                   //itemType of the Item
 
 

@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Weapon : Item {
 
-    public string AmmoType;
+    public int fireRate;
+    public int clipSize;
+    public int bulletSpeed;
+    public Ammo Ammo;
 }
