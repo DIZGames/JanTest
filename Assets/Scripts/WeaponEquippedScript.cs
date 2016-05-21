@@ -31,18 +31,18 @@ public class WeaponEquippedScript : MonoBehaviour {
 
         Vector2 mouseposition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
-        if (Input.GetButtonDown("Fire1")) {
-            transform.GetChild(0).GetComponent<Weaponinterface>().primaryFire();
-            Debug.Log("PENG");
-        }
+        
 
         if (item != null) {
 
             if (item.itemType == ItemType.Weapon)
             {
-
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    transform.GetChild(0).GetComponent<Weaponinterface>().primaryFire();
+                    Debug.Log("PENG");
+                }
             }
-
         }
 
         

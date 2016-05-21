@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Block1.cs" />
     <Compile Include="Assets\ExtendedGameObject.cs" />
     <Compile Include="Assets\InputManagement\InputManager.cs" />
     <Compile Include="Assets\ItemScripts\Ammo.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\ItemScripts\Materials.cs" />
     <Compile Include="Assets\ItemScripts\Tool.cs" />
     <Compile Include="Assets\ItemScripts\Weapon.cs" />
+    <Compile Include="Assets\RocketScript.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
     <Compile Include="Assets\Scripts\CreateItemDatabase.cs" />
