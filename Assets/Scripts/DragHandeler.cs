@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler {
 
-    public static GameObject itemBeingDragged;
+    private static GameObject itemBeingDragged;
     Vector3 startPosition;
     Transform startParent;
      
@@ -19,27 +19,34 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndD
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         GetComponent<LayoutElement>().ignoreLayout = true;
-
+        
         itemBeingDragged.transform.SetParent(transform.parent.parent.parent.parent);
 
-        ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, eventData, (x, y) => x.DropItem(GetComponent<ItemOnObject>().getItem()));
+        Debug.Log("Start Drag");
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        itemBeingDragged = null;
+        Debug.Log("On ENDDRAG");
+       // itemBeingDragged = null;
+
+        //wenn Parent nach OnDrop der gleiche geblieben ist oder das ItembeingDragged sonstwo hingezogen wurde, dann setze wieder auf den ursprungsslot
         if (transform.parent == startParent || transform.parent == startParent.parent.parent.parent)
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
         }
+        else if(transform.parent.childCount > 0){
+            Debug.Log("else IF");
+        }
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         GetComponent<LayoutElement>().ignoreLayout = false;
+
+        
     }
 }

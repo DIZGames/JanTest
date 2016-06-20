@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.3.4f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -63,54 +65,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CreateItemDatabase.cs" />
-    <Compile Include="Assets\DragHandeler.cs" />
-    <Compile Include="Assets\DragWindowHandeler.cs" />
-    <Compile Include="Assets\HotbarScript.cs" />
-    <Compile Include="Assets\InputManagement\InputManager.cs" />
-    <Compile Include="Assets\InventoryInterface.cs" />
-    <Compile Include="Assets\InventoryKeys.cs" />
-    <Compile Include="Assets\InventoryScript.cs" />
-    <Compile Include="Assets\ItemList.cs" />
-    <Compile Include="Assets\ItemMethods.cs" />
-    <Compile Include="Assets\ItemMethodsA.cs" />
-    <Compile Include="Assets\ItemOnObject.cs" />
-    <Compile Include="Assets\ItemScripts\Ammo.cs" />
-    <Compile Include="Assets\ItemScripts\Block.cs" />
-    <Compile Include="Assets\ItemScripts\Clothing.cs" />
-    <Compile Include="Assets\ItemScripts\Consumables.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateAmmo.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateBlocks.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateClothing.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateConsumables.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateMaterial.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateTools.cs" />
-    <Compile Include="Assets\ItemScripts\CreateScripts\CreateWeapon.cs" />
-    <Compile Include="Assets\ItemScripts\Item.cs" />
-    <Compile Include="Assets\ItemScripts\Materials.cs" />
-    <Compile Include="Assets\ItemScripts\Tool.cs" />
-    <Compile Include="Assets\ItemScripts\Weapon.cs" />
-    <Compile Include="Assets\ItemType.cs" />
-    <Compile Include="Assets\OnDropSlot.cs" />
-    <Compile Include="Assets\PistolScript.cs" />
-    <Compile Include="Assets\PlayerInventory.cs" />
+    <Compile Include="Assets\AmmoInfo.cs" />
+    <Compile Include="Assets\CreateInputManager.cs" />
+    <Compile Include="Assets\CustomEvent.cs" />
+    <Compile Include="Assets\EventSystem\CustomEvent.cs" />
+    <Compile Include="Assets\EventSystem\customEventData.cs" />
+    <Compile Include="Assets\EventSystem\EventManager.cs" />
+    <Compile Include="Assets\EventSystem\ItemEvent.cs" />
+    <Compile Include="Assets\ITSystem\Create\CreateItemAmmo.cs" />
+    <Compile Include="Assets\ITSystem\Create\CreateItemDataBase.cs" />
+    <Compile Include="Assets\ITSystem\Create\CreateItemWeapon.cs" />
+    <Compile Include="Assets\ITSystem\IItem.cs" />
+    <Compile Include="Assets\ITSystem\IWeapon.cs" />
+    <Compile Include="Assets\ITSystem\Item.cs" />
+    <Compile Include="Assets\ITSystem\ItemAmmo.cs" />
+    <Compile Include="Assets\ITSystem\ItemDataBase.cs" />
+    <Compile Include="Assets\ITSystem\ItemWeapon.cs" />
+    <Compile Include="Assets\ITSystem\TypeClothing.cs" />
+    <Compile Include="Assets\ITSystem\TypeConsumable.cs" />
+    <Compile Include="Assets\ITSystem\TypeItem.cs" />
+    <Compile Include="Assets\InputManager.cs" />
+    <Compile Include="Assets\OnDropHotbar.cs" />
+    <Compile Include="Assets\PlayerScript.cs" />
+    <Compile Include="Assets\RocketLauncherScript.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraZoom.cs" />
-    <Compile Include="Assets\Scripts\Inventory\CreateItem.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Items.cs" />
+    <Compile Include="Assets\Scripts\DragHandeler.cs" />
+    <Compile Include="Assets\Scripts\DragWindowHandeler.cs" />
+    <Compile Include="Assets\Scripts\ItemOnObject.cs" />
+    <Compile Include="Assets\Scripts\OnDropSlot.cs" />
+    <Compile Include="Assets\Scripts\PistolScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController_AddForce.cs" />
     <Compile Include="Assets\Scripts\PlayerController_Translate.cs" />
-    <Compile Include="Assets\Scripts\PlayerInventar.cs" />
+    <Compile Include="Assets\Scripts\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\RayCastObjectDetection.cs" />
-    <Compile Include="Assets\Scripts\RocketLauncherScript.cs" />
     <Compile Include="Assets\Scripts\UI_Control.cs" />
-    <Compile Include="Assets\Scripts\WeaponInterface.cs" />
-    <Compile Include="Assets\Scripts\WeaponSelect.cs" />
+    <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\SlotListScript.cs" />
-    <Compile Include="Assets\SlotScript.cs" />
-    <Compile Include="Assets\WeaponEquippedScript.cs" />
-    <Compile Include="Assets\WeaponInterface.cs" />
+    <Compile Include="Assets\SplitItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

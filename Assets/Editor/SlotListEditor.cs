@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using Assets.ITSystem;
 
 [CustomEditor(typeof(SlotListScript))]
-public class SlotListEditor : Editor {
+public class SlotListEditor : Editor
+{
 
-    
+
     private int itemIndex;
     private int itemValue;
 
@@ -24,17 +26,17 @@ public class SlotListEditor : Editor {
         GUILayout.Label("Add an item:");
         // inv.setImportantVariables();                                                                                                            //space to the top gui element
         EditorGUILayout.BeginHorizontal();                                                                                  //starting horizontal GUI elements
-        ItemList itemList = (ItemList)Resources.Load("ItemDatabase");
-        
-        //ItemDataBaseList inventoryItemList = (ItemDatabase)Resources.Load("ItemDatabase");                            //loading the itemdatabase
-        string[] items = new string[itemList.getCount()];
+        ItemDataBase itemDataBase = (ItemDataBase)Resources.Load("ItemDataBase");
 
-        Item[] items1 = new Item[itemList.getCount()];
-        
+        //ItemDataBaseList inventoryItemList = (ItemDatabase)Resources.Load("ItemDatabase");                            //loading the itemdatabase
+        string[] items = new string[itemDataBase.getCount()];
+
+        Item[] items1 = new Item[itemDataBase.getCount()];
+
         //create a string array in length of the itemcount
         for (int i = 0; i < items.Length; i++)                                                                              //go through the item array
         {
-            items[i] = itemList.getItemByListIndex(i).itemName;                                                             //and paste all names into the array
+            items[i] = itemDataBase.getItemByIndex(i).Name;                                                            //and paste all names into the array
         }
 
         itemIndex = EditorGUILayout.Popup("", itemIndex, items, EditorStyles.popup);                                              //create a popout with all itemnames in it and save the itemID of it
@@ -42,15 +44,15 @@ public class SlotListEditor : Editor {
         GUI.color = Color.green;                                                                                            //set the color of all following guielements to green
         if (GUILayout.Button("Add Item"))                                                                                   //creating button with name "AddItem"
         {
-            Debug.Log("Add:" + itemIndex.ToString() + " " + itemValue);
-            
+            Debug.Log("Add: index:" + itemIndex.ToString() + " value:" + itemValue);
 
-            Item item = itemList.getItemByListIndex(itemIndex);
-            item.itemCount = itemValue;
-            Debug.Log("ITEM FOUND:" + item.itemID.ToString() + " " + item.itemCount);
 
-            slScript.addItemToNextFreeSlot(item, gObject);
-            
+            Item item = itemDataBase.getItemByIndex(itemIndex).getCopy();
+            item.Stack = itemValue;
+            Debug.Log("ITEM FOUND:" + item.ID.ToString() + " " + item.Stack);
+
+            slScript.addItemToNextFreeSlot(item);
+
         }
         EditorGUILayout.EndHorizontal();
     }

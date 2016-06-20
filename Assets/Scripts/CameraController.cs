@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
+using System;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour,IPointerDownHandler {
 
     public GameObject player;
     private Vector3 offset;
@@ -16,5 +18,10 @@ public class CameraController : MonoBehaviour {
     void LateUpdate()
     {
         transform.position = player.transform.position + offset;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Test");
     }
 }

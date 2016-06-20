@@ -1,11 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
+using System;
+using Assets.ITSystem;
 
-public class PlayerController_AddForce : MonoBehaviour {
+public class PlayerController_AddForce : MonoBehaviour
+{
 
     private Rigidbody2D rb2d;
     public float speed;
     private int count = 0;
+
+    [SerializeField]
+    private Transform Inventory;
+
+    [SerializeField]
+    private InputManager inputManager;
 
     void Start()
     {
@@ -15,6 +25,7 @@ public class PlayerController_AddForce : MonoBehaviour {
 
     void FixedUpdate()
     {
+
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -27,21 +38,29 @@ public class PlayerController_AddForce : MonoBehaviour {
         // Normalisiert den Vektor
         vectornew.Normalize();
 
-        if (Input.GetKey("w"))
+        if (Input.GetKey(inputManager.Up))
         {
             rb2d.AddForce(vectornew * Time.deltaTime * speed);
         }
-        if (Input.GetKey("a"))
-        {
-          
-        }
-        if (Input.GetKey("d"))
-        {
-        
-        }
-        if (Input.GetKey("s"))
+        if (Input.GetKey(inputManager.Down))
         {
             rb2d.AddForce(-vectornew * Time.deltaTime * speed);
         }
+        if (Input.GetKey(inputManager.Left))
+        {
+        
+        }
+        if (Input.GetKey(inputManager.Right))
+        {
+            
+        }
     }
+}
+
+public interface IEquipmentChanged : IEventSystemHandler
+{
+    void refreshAmmo(int Loaded, int Stock);
+
+
+
 }
