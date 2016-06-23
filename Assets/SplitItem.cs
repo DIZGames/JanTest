@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 using Assets.EventSystem;
+using Assets.ITSystem;
 
 public class SplitItem : MonoBehaviour, IPointerDownHandler
 {
@@ -31,7 +32,10 @@ public class SplitItem : MonoBehaviour, IPointerDownHandler
                 itemOnObject.getItem().Stack = result + modulo;
 
 
-                EventManager.Instance.TriggerEvent("AddToInventory",itemOnObject.getItem());
+                Item _item = itemOnObject.getItem().getCopy();
+                _item.Stack = result;
+
+                EventManager.Instance.TriggerEvent(EventIdentifier.onSplitItem, new customEventData(_item));
 
                 //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, eventData, (x, y) => x.addToInventory(itemOnObject.getItem(), result));
 

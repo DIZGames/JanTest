@@ -44,7 +44,11 @@ namespace Assets.ITSystem
         public int Stock
         {
             get { return _Stock; }
-            set { _Stock = value; }
+            set {
+                if (value >= 0) {
+                    _Stock = value;
+                }
+            }
         }
     }
 }

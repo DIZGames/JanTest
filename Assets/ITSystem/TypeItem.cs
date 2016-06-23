@@ -12,6 +12,8 @@ namespace Assets.ITSystem
         Tool,
         Consumable,
         Clothing,
-        Material
+        Material,
+        Block,
+        Human
     }
 }

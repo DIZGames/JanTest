@@ -32,17 +32,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("On ENDDRAG");
-       // itemBeingDragged = null;
-
-        //wenn Parent nach OnDrop der gleiche geblieben ist oder das ItembeingDragged sonstwo hingezogen wurde, dann setze wieder auf den ursprungsslot
         if (transform.parent == startParent || transform.parent == startParent.parent.parent.parent)
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
         }
         else if(transform.parent.childCount > 0){
-            Debug.Log("else IF");
         }
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         GetComponent<LayoutElement>().ignoreLayout = false;

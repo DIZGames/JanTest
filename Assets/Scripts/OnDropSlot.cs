@@ -3,11 +3,15 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 using Assets.ITSystem;
+using Assets.EventSystem;
 
 public class OnDropSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField]
     private TypeItem[] allowedItemTypes;
+
+    [SerializeField]
+    private EventIdentifier OnDropEvent;
 
     private bool isAllowed(Item item) {
         if (allowedItemTypes.Length == 0){
@@ -21,7 +25,6 @@ public class OnDropSlot : MonoBehaviour, IDropHandler
             }
             return false;
         }
-
     }
 
 
@@ -30,16 +33,10 @@ public class OnDropSlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null && isAllowed(eventData.pointerDrag.gameObject.GetComponent<ItemOnObject>().getItem())) {
             if (transform.childCount == 0)
             {  //Wenn Slot leer
-                //if (eventData.pointerDrag != null)
-                //{
                     eventData.pointerDrag.transform.SetParent(transform);
-                //}
             }
             else if (transform.childCount > 0)
             {   //Wenn Slot bereits ein ItemSlot besitzt
-                //if (eventData.pointerDrag != null)
-                //{
-
                     ItemOnObject draggedItem = eventData.pointerDrag.GetComponent<ItemOnObject>();
                     ItemOnObject slotItem = transform.GetChild(0).GetComponent<ItemOnObject>();
 
@@ -65,21 +62,11 @@ public class OnDropSlot : MonoBehaviour, IDropHandler
                         Item item = draggedItem.getItem();
                         draggedItem.setItem(slotItem.getItem());
                         slotItem.setItem(item);
-
                     }
-
                     draggedItem.refreshTile();
                     slotItem.refreshTile();
                 }
-
-            //}
-
         }
-
-        
-
-        //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
-
     }
 }
 

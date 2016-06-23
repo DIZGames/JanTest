@@ -3,16 +3,15 @@ using UnityEngine.UI;
 using System.Collections;
 using Assets.ITSystem;
 using UnityEngine.EventSystems;
+using Assets.EventSystem;
 
 public class ItemOnObject : MonoBehaviour {
 
     [SerializeField]
     private Item _Item;
-    [SerializeField]
-    private int Count;
 
     void Start() {
-
+        EventManager.Instance.AddListener(EventIdentifier.onRefreshSlot, (customEventData) => { refreshTile(); });
     }
 
     public Item getItem() {
@@ -28,8 +27,15 @@ public class ItemOnObject : MonoBehaviour {
     }
 
     public void refreshTile() {
-        transform.GetChild(0).GetComponent<Image>().sprite = _Item.Icon;
-        transform.GetChild(1).GetComponent<Text>().text = _Item.Stack.ToString();
+        if (_Item.Stack != 0) {
+            transform.GetChild(0).GetComponent<Image>().sprite = _Item.Icon;
+            transform.GetChild(1).GetComponent<Text>().text = _Item.Stack.ToString();
+        }
+        else {
+            destroyObject();
+        }
+
+        
     }
 
     public void destroyObject() {
@@ -46,8 +52,6 @@ public class ItemOnObject : MonoBehaviour {
     public void increaseStack(int count) {
         _Item.Stack = _Item.Stack + count;
     }
-
-
 
 
 

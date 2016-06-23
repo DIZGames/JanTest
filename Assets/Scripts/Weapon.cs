@@ -12,8 +12,6 @@ namespace Assets.Scripts
     {
         public ItemWeapon itemWeapon { get; set; }
 
-        public UnityEvent reload;
-
         public Transform FirePoint;
     }
 }

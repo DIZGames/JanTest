@@ -3,11 +3,15 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using Assets.ITSystem;
 using System;
+using Assets.EventSystem;
 
 public class OnDropHotbar : MonoBehaviour, IDropHandler {
 
     [SerializeField]
     private TypeItem[] allowedItemTypes;
+
+    [SerializeField]
+    private EventIdentifier OnDropEvent;
 
     private bool isAllowed(Item item)
     {
@@ -51,10 +55,6 @@ public class OnDropHotbar : MonoBehaviour, IDropHandler {
             }
 
         }
-
-
-        //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
+        EventManager.Instance.TriggerEvent(OnDropEvent, new customEventData(eventData.pointerDrag.gameObject.GetComponent<ItemOnObject>().getItem()));
     }
-
-
 }

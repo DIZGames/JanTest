@@ -9,6 +9,7 @@ namespace Assets.ITSystem
     {
         Head,
         Body,
-        Mod
+        Mod1,
+        Mod2
     }
 }

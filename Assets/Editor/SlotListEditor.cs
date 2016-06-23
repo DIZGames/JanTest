@@ -31,8 +31,6 @@ public class SlotListEditor : Editor
         //ItemDataBaseList inventoryItemList = (ItemDatabase)Resources.Load("ItemDatabase");                            //loading the itemdatabase
         string[] items = new string[itemDataBase.getCount()];
 
-        Item[] items1 = new Item[itemDataBase.getCount()];
-
         //create a string array in length of the itemcount
         for (int i = 0; i < items.Length; i++)                                                                              //go through the item array
         {

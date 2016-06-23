@@ -4,6 +4,7 @@ using Assets.ITSystem;
 using System;
 using UnityEngine.EventSystems;
 using Assets.Scripts;
+using Assets.EventSystem;
 
 public class RocketLauncherScript : Weapon, IUsable{
 
@@ -34,21 +35,20 @@ public class RocketLauncherScript : Weapon, IUsable{
             Debug.Log(mouseposition.x.ToString() + " " + mouseposition.y.ToString());
 
             t.gameObject.GetComponent<Rigidbody2D>().AddForce(vectornew * itemWeapon.BulletSpeed * Time.deltaTime, ForceMode2D.Impulse);
+
+            EventManager.Instance.TriggerEvent(EventIdentifier.onRefreshAmmoInfo, new customEventData(itemWeapon));
         }
     }
 
     public void Action2()
     {
-        reload.Invoke();
+     
     }
 
     public void Reload()
     {
-        if (itemWeapon.Stock >= 1)
-        {
-            itemWeapon.Stock--;
-            itemWeapon.Loaded = itemWeapon.Ammo.ClipSize;
-        }
+        EventManager.Instance.TriggerEvent(EventIdentifier.onReloadWeapon, new customEventData(itemWeapon));
+        EventManager.Instance.TriggerEvent(EventIdentifier.onRefreshAmmoInfo, new customEventData(itemWeapon));
     }
 
     public void Destroy()
